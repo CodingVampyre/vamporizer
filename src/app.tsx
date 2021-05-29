@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import {Wrapper} from "./Components/Wrapper";
 
 function render() {
-	ReactDOM.render(<h2>Hello from React!</h2>, document.body);
+	ReactDOM.render(<Wrapper />, document.getElementById('root'));
 }
 
 render();

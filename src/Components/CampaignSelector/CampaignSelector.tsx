@@ -4,6 +4,7 @@ import {ICampaign} from "../../Domain/ICampaign";
 import {Header} from "../Common/Header/Header";
 import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
+import {CampaignEntry} from "./CamapignEntry/CampaignEntry";
 
 export function CampaignSelector(): JSX.Element {
 
@@ -12,11 +13,13 @@ export function CampaignSelector(): JSX.Element {
 	const [newCampaignName, setNewCampaignName] = useState('');
 
 	function createCampaign(name: string) {
-		setCampaigns(old => {
-			const current = old.slice();
-			current.push({ name: name, characters: [] });
-			return current;
-		});
+		if (newCampaignName !== '') {
+			setCampaigns(old => {
+				const current = old.slice();
+				current.push({ name: name, characters: [] });
+				return current;
+			});
+		}
 		setNewCampaignName('');
 	}
 
@@ -35,11 +38,18 @@ export function CampaignSelector(): JSX.Element {
 					text={newCampaignName}
 				/>
 			</Modal>
-			<ul>
-				{
-					campaigns.map((campaign, index) => <li key={index}>{ campaign.name }</li>)
-				}
-			</ul>
+			{
+				campaigns.map((campaign, index) => (
+					<CampaignEntry
+						key={index}
+						name={ campaign.name }
+						index={index}
+						onClick={ (index) => {
+							console.log('activating campaign', index);
+						} }
+					/>
+				))
+			}
 		</div>
 	);
 }

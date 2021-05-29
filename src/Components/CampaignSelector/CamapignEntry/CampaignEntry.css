@@ -1,22 +1,19 @@
-.button {
-	background: none;
+.campaign-entry {
+	box-sizing: border-box;
+	padding: 10px;
 	border: 2px solid #eee;
-	color: #eee;
-	padding: 5px 10px 5px 10px;
 	border-radius: 8px;
-	font-family: GoudyRegular, sans-serif;
-	font-size: 14px;
-	margin-right: 10px;
 	cursor: pointer;
 	transition: 100ms;
+	margin-bottom: 10px;
 }
 
-.button:hover {
+.campaign-entry:hover {
 	box-shadow: 0 2px 0 white;
 	transform: translate(0, -2px);
 }
 
-.button:active {
+.campaign-entry:active {
 	transform: translate(0, 0);
 	box-shadow: 0 0 0 white;
 }

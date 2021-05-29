@@ -15,7 +15,10 @@ function Modal(props: {
 
 	return (
 		<div className={'modal-wrapper'}>
-			<Button text={props.openButtonText} onClick={ () => setModalActive(true) } />
+			<Button
+				text={props.openButtonText}
+				onClick={ () => setModalActive(true) }
+			/>
 			{
 				modalActive &&
 					<div className={'modal'}>

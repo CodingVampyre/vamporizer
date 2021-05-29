@@ -6,19 +6,17 @@ import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
 import {CampaignEntry} from "./CamapignEntry/CampaignEntry";
 
-export function CampaignSelector(): JSX.Element {
+export function CampaignSelector(props: {
+	campaigns: ICampaign[];
+	onCreateCampaign: (campaign: ICampaign) => unknown;
+	onSelectCampaign: (index: number) => unknown;
+}): JSX.Element {
 
-	// TODO add to persistance
-	const [campaigns, setCampaigns] = useState<ICampaign[]>([]);
 	const [newCampaignName, setNewCampaignName] = useState('');
 
 	function createCampaign(name: string) {
 		if (newCampaignName !== '') {
-			setCampaigns(old => {
-				const current = old.slice();
-				current.push({ name: name, characters: [] });
-				return current;
-			});
+			props.onCreateCampaign({ name, characters: [] });
 		}
 		setNewCampaignName('');
 	}
@@ -39,14 +37,12 @@ export function CampaignSelector(): JSX.Element {
 				/>
 			</Modal>
 			{
-				campaigns.map((campaign, index) => (
+				props.campaigns.map((campaign, index) => (
 					<CampaignEntry
 						key={index}
 						name={ campaign.name }
 						index={index}
-						onClick={ (index) => {
-							console.log('activating campaign', index);
-						} }
+						onClick={ (index) => props.onSelectCampaign(index) }
 					/>
 				))
 			}

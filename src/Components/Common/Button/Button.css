@@ -1,0 +1,10 @@
+.button {
+	background: none;
+	border: 2px solid #eee;
+	color: #eee;
+	padding: 5px 10px 5px 10px;
+	border-radius: 8px;
+	font-family: GoudyRegular, sans-serif;
+	font-size: 14px;
+	margin-right: 10px;
+}

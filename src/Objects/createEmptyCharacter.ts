@@ -72,10 +72,7 @@ export function createEmptyCharacter(name: string, campaign: string): ICharacter
 		background: '',
 		bloodPool: { max: 10, current: 10, },
 		chronicle: campaign,
-		clan: {
-			name: '',
-			weakness: undefined,
-		},
+		clan: undefined,
 		concept: '',
 		demeanor: { name: '', description: '' },
 		experience: 0,

@@ -7,15 +7,18 @@ import {Input} from "../Common/Input/Input";
 import {useState} from "react";
 import {ICharacter} from "../../Domain/ICharacter";
 import {createEmptyCharacter} from "../../Objects/createEmptyCharacter";
+import {CharacterList} from "./CharacterList/CharacterList";
 
 export function CharacterManager(props: {
 	campaign: ICampaign;
+	onCreateDraft: (character: ICharacter) => unknown;
 }) {
 
 	const [newCharacterName, setNewCharacterName] = useState<string>('');
 
 	function create() {
 		const character: ICharacter = createEmptyCharacter(newCharacterName, props.campaign.name);
+		props.onCreateDraft(character);
 	}
 
 	return (
@@ -33,6 +36,12 @@ export function CharacterManager(props: {
 					text={ newCharacterName }
 				/>
 			</Modal>
+
+			<Header text={'Characters'} />
+			<CharacterList characters={props.campaign.characters} />
+
+			<Header text={'Drafts'} />
+			<CharacterList characters={props.campaign.characterDrafts} />
 		</div>
 	);
 }

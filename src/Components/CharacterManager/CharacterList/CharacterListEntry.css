@@ -1,0 +1,25 @@
+.character-list-entry {
+	width: 100px;
+	height: 150px;
+	border: 2px solid white;
+	border-radius: 8px;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 5px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.character-list-entry:hover {
+	box-shadow: 0 2px 0 white;
+	transform: translate(0, -2px);
+}
+
+.character-list-entry:active {
+	transform: translate(0, 0);
+	box-shadow: 0 0 0 white;
+}

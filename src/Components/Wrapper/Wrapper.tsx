@@ -26,7 +26,20 @@ export function Wrapper(): JSX.Element {
 						onSelectCampaign={ index => setActiveCampaign(campaigns[index]) }
 					/>
 				) || (
-					<CharacterManager campaign={activeCampaign} />
+					<CharacterManager
+						campaign={activeCampaign}
+						onCreateDraft={(character) => {
+							setActiveCampaign((current) => {
+								const drafts = activeCampaign.characterDrafts.slice();
+								drafts.push(character);
+								const next: ICampaign =  {
+									...current,
+									characterDrafts: drafts,
+								}
+								return next;
+							});
+						}}
+					/>
 				)
 			}
 		</div>

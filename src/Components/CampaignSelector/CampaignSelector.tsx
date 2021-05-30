@@ -16,7 +16,7 @@ export function CampaignSelector(props: {
 
 	function createCampaign(name: string) {
 		if (newCampaignName !== '') {
-			props.onCreateCampaign({ name, characters: [] });
+			props.onCreateCampaign({ name, characters: [], characterDrafts: [] });
 		}
 		setNewCampaignName('');
 	}

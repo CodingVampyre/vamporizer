@@ -7,7 +7,6 @@ import {IAdvantages} from "./IAdvantages";
 import {IMeritFlaw} from "./IMeritFlaw";
 import {IPath} from "./IPath";
 import {IPool} from "./IPool";
-import {IBuff} from "./IBuff";
 
 export interface ICharacter {
 	// Sheet

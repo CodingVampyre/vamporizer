@@ -1,5 +1,6 @@
 import {ICharacter} from "../Domain/ICharacter";
 import {PathsEnum} from "./PathEnum";
+import {ClanType} from "../Domain/IClan";
 
 export function createEmptyCharacter(name: string, campaign: string): ICharacter {
 	return {
@@ -72,7 +73,7 @@ export function createEmptyCharacter(name: string, campaign: string): ICharacter
 		background: '',
 		bloodPool: { max: 10, current: 10, },
 		chronicle: campaign,
-		clan: undefined,
+		clan: { name: '', weakness: undefined, type: ClanType.CLAN },
 		concept: '',
 		demeanor: undefined,
 		experience: 0,

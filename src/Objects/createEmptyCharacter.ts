@@ -74,13 +74,13 @@ export function createEmptyCharacter(name: string, campaign: string): ICharacter
 		chronicle: campaign,
 		clan: undefined,
 		concept: '',
-		demeanor: { name: '', description: '' },
+		demeanor: undefined,
 		experience: 0,
 		generation: 13,
 		health: { max: 8, current: 8 }, // TODO use numbered enum
 		inventory: [],
 		meritsFlaws: [],
-		nature: { name: '', description: '' },
+		nature: undefined,
 		path: {
 			name: PathsEnum.HUMANITY,
 			level: 0,

@@ -1,6 +1,5 @@
 import {ICharacter} from "../Domain/ICharacter";
-import {IPerk} from "../Domain/IPerk";
-import {IVirtues} from "../Domain/IAdvantages";
+import {PathsEnum} from "./PathEnum";
 
 export function createEmptyCharacter(name: string, campaign: string): ICharacter {
 	return {
@@ -86,7 +85,7 @@ export function createEmptyCharacter(name: string, campaign: string): ICharacter
 		meritsFlaws: [],
 		nature: { name: '', description: '' },
 		path: {
-			name: 'humanity', // TODO generate
+			name: PathsEnum.HUMANITY,
 			level: 0,
 			bearing: undefined,
 		},

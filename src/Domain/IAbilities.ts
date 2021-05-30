@@ -15,16 +15,16 @@ export interface ITalents {
 }
 
 export interface ISkills {
-	animalKen: IPerk
-	crafts: IPerk
-	drive: IPerk
-	etiquette: IPerk
-	firearms: IPerk
-	larceny: IPerk
-	melee: IPerk
-	performance: IPerk
-	stealth: IPerk
-	survival: IPerk
+	animalKen: IPerk;
+	crafts: IPerk;
+	drive: IPerk;
+	etiquette: IPerk;
+	firearms: IPerk;
+	larceny: IPerk;
+	melee: IPerk;
+	performance: IPerk;
+	stealth: IPerk;
+	survival: IPerk;
 }
 
 export interface IKnowledges {

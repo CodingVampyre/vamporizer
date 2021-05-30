@@ -2,17 +2,13 @@
 import {IPerk} from "./IPerk";
 
 export interface IVirtues {
-	conscience?: IPerk;
-	conviction?: IPerk;
-
-	selfControl?: IPerk;
-	instinct?: IPerk;
-
+	conscienceConviction: IPerk;
+	selfControlInstinct: IPerk;
 	courage: IPerk;
 }
 
 export interface IAdvantages {
 	disciplines: IPerk[];
 	backgrounds: IPerk[];
-	Virtues: IVirtues;
+	virtues: IVirtues;
 }

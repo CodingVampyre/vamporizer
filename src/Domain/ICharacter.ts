@@ -30,7 +30,6 @@ export interface ICharacter {
 	willpower: IPool;
 	bloodPool: IPool;
 	health: IPool;
-	weakness: IBuff;
 	experience: number;
 
 	// Additional

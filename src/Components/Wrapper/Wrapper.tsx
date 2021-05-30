@@ -3,6 +3,7 @@ import {CampaignSelector} from "../CampaignSelector/CampaignSelector";
 import './Wrapper.css';
 import {useState} from "react";
 import {ICampaign} from "../../Domain/ICampaign";
+import {CharacterManager} from "../CharacterManager/CharacterManager";
 
 export function Wrapper(): JSX.Element {
 
@@ -11,18 +12,23 @@ export function Wrapper(): JSX.Element {
 
 	return (
 		<div className={'wrapper'}>
-			<CampaignSelector
-				campaigns={campaigns}
-				onCreateCampaign={ campaign => {
-					setCampaigns(old => {
-						const current = old.slice();
-						current.push(campaign);
-						return current;
-					})
-				} }
-				onSelectCampaign={ index => setActiveCampaign(campaigns[index]) }
-			/>
-			<p>{activeCampaign?.name || 'None'}</p>
+			{
+				activeCampaign === undefined && (
+					<CampaignSelector
+						campaigns={campaigns}
+						onCreateCampaign={ campaign => {
+							setCampaigns(old => {
+								const current = old.slice();
+								current.push(campaign);
+								return current;
+							})
+						} }
+						onSelectCampaign={ index => setActiveCampaign(campaigns[index]) }
+					/>
+				) || (
+					<CharacterManager campaign={activeCampaign} />
+				)
+			}
 		</div>
 	);
 }

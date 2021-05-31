@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ICampaign} from "../Domain/ICampaign";
 import * as _ from 'lodash';
 import {createEmptyCharacter} from "../Objects/createEmptyCharacter";
@@ -18,10 +18,6 @@ export function useCampaigns() {
 		});
 	}
 
-	function setCampaign(index: number) {
-		setCurrentCampaign(index);
-	}
-
 	// CHARACTERS
 
 	function addCharacterDraft(characterName: string): number {
@@ -39,6 +35,7 @@ export function useCampaigns() {
 		campaigns,
 		currentCampaign,
 		createCampaign,
-		setCampaign,
+		setCurrentCampaign,
+		addCharacterDraft,
 	};
 }

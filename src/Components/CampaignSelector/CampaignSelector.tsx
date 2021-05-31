@@ -1,25 +1,15 @@
 import * as React from 'react';
 import {useState} from "react";
-import {ICampaign} from "../../Domain/ICampaign";
 import {Header} from "../Common/Header/Header";
 import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
 import {CampaignEntry} from "./CamapignEntry/CampaignEntry";
+import {useCampaigns} from "../../Hooks/UseCampaigns";
 
-export function CampaignSelector(props: {
-	campaigns: ICampaign[];
-	onCreateCampaign: (campaign: ICampaign) => unknown;
-	onSelectCampaign: (index: number) => unknown;
-}): JSX.Element {
+export function CampaignSelector(): JSX.Element {
 
 	const [newCampaignName, setNewCampaignName] = useState('');
-
-	function createCampaign(name: string) {
-		if (newCampaignName !== '') {
-			props.onCreateCampaign({ name, characters: [], characterDrafts: [] });
-		}
-		setNewCampaignName('');
-	}
+	const { campaigns, setCurrentCampaign, createCampaign } = useCampaigns();
 
 	return (
 		<div className={'campaign-selector'}>
@@ -37,12 +27,12 @@ export function CampaignSelector(props: {
 				/>
 			</Modal>
 			{
-				props.campaigns.map((campaign, index) => (
+				campaigns.map((campaign, index) => (
 					<CampaignEntry
 						key={index}
 						name={ campaign.name }
 						index={index}
-						onClick={ (index) => props.onSelectCampaign(index) }
+						onClick={ (index) => setCurrentCampaign(index) }
 					/>
 				))
 			}

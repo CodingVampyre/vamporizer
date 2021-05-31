@@ -5,25 +5,21 @@ import {Header} from "../Common/Header/Header";
 import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
 import {useState} from "react";
-import {ICharacter} from "../../Domain/ICharacter";
-import {createEmptyCharacter} from "../../Objects/createEmptyCharacter";
 import {CharacterList} from "./CharacterList/CharacterList";
+import {useCampaigns} from "../../Hooks/UseCampaigns";
 
-export function CharacterManager(props: {
-	campaign: ICampaign;
-	onCreateDraft: (character: ICharacter) => unknown;
-}) {
+export function CharacterManager() {
 
 	const [newCharacterName, setNewCharacterName] = useState<string>('');
+	const { campaigns, currentCampaign, addCharacterDraft } = useCampaigns();
 
 	function create() {
-		const character: ICharacter = createEmptyCharacter(newCharacterName, props.campaign.name);
-		props.onCreateDraft(character);
+		addCharacterDraft(newCharacterName);
 	}
 
 	return (
 		<div className={'character-manager'}>
-			<Header text={props.campaign.name} />
+			<Header text={campaigns[currentCampaign].name} />
 			<Modal
 				openButtonText={'Create Character'}
 				closeButtonText={'Create'}
@@ -38,10 +34,10 @@ export function CharacterManager(props: {
 			</Modal>
 
 			<Header text={'Characters'} />
-			<CharacterList characters={props.campaign.characters} />
+			<CharacterList characters={campaigns[currentCampaign].characters} />
 
 			<Header text={'Drafts'} />
-			<CharacterList characters={props.campaign.characterDrafts} />
+			<CharacterList characters={campaigns[currentCampaign].characterDrafts} />
 		</div>
 	);
 }

@@ -8,21 +8,27 @@ import {createEmptyCharacter} from "../Objects/createEmptyCharacter";
 export const CampaignContext = React.createContext<{
 	campaigns: ICampaign[],
 	currentCampaign: number | undefined,
+	currentCharacter: number | undefined,
+
 	createCampaign: (name: string) => unknown,
 	setCurrentCampaign: (index: number) => unknown,
 	addCharacterDraft: (characterName: string) => unknown,
+	setCurrentCharacter: (index: number) => unknown,
 }>({
 	campaigns: [],
 	currentCampaign: undefined,
+	currentCharacter: undefined,
 	createCampaign: (name: string) => {},
 	setCurrentCampaign: (index: number) => {},
 	addCharacterDraft: (characterName: string) => {},
+	setCurrentCharacter: ((index: number) => {}),
 });
 
 export function App() {
 
 	const [campaigns, setCampaigns] = useState<ICampaign[]>([]);
 	const [currentCampaign, setCurrentCampaign] = useState<number | undefined>(undefined);
+	const [currentCharacter, setCurrentCharacter] = useState<number | undefined>(undefined);
 
 	function createCampaign(name: string): void {
 		setCampaigns(last => {
@@ -49,9 +55,12 @@ export function App() {
 		<CampaignContext.Provider value={{
 			campaigns,
 			currentCampaign,
+			currentCharacter,
+
 			createCampaign,
 			setCurrentCampaign,
 			addCharacterDraft,
+			setCurrentCharacter,
 		}}>
 			<Wrapper />
 		</CampaignContext.Provider>

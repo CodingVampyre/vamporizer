@@ -11,7 +11,7 @@ export const Clans: IClan[] = [
 	{ name: 'Nosferatu', weakness: { name: 'Repulsiveness', description: '' }, type: ClanType.CLAN },
 	{ name: 'Ravnos', weakness: { name: 'Doomed', description: '' }, type: ClanType.CLAN },
 	{ name: 'Toreador', weakness: { name: 'Repulsiveness', description: '' }, type: ClanType.CLAN },
-	{ name: 'Tremer', weakness: { name: 'Deficient Blood', description: '' }, type: ClanType.CLAN },
+	{ name: 'Tremere', weakness: { name: 'Deficient Blood', description: '' }, type: ClanType.CLAN },
 	{ name: 'Tzimisce', weakness: { name: 'Grounded', description: '' }, type: ClanType.CLAN },
 	{ name: 'Ventrue', weakness: { name: 'Arrogance', description: '' }, type: ClanType.CLAN },
 ]

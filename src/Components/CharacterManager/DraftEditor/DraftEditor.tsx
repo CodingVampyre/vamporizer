@@ -3,6 +3,8 @@ import './DraftEditor.css';
 import {useContext} from "react";
 import {CampaignContext} from "../../../Context/CampaignContext";
 import {EditableTextField} from "../../Common/EditableField/EditableField";
+import {EditableListField} from "../../Common/EditableField/EditableListField";
+import {Clans} from "../../../Objects/Clans";
 
 export function DraftEditor(): JSX.Element {
 
@@ -13,6 +15,13 @@ export function DraftEditor(): JSX.Element {
 			<EditableTextField
 				value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name}
 				onConfirm={ (name) => CharacterDraft.setName(name) }
+			/>
+			<EditableListField
+				value={Clans[0]}
+				list={Clans}
+				onSelect={ (value) => {
+					console.log('selected', value);
+				} }
 			/>
 		</div>
 	);

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {Header} from "../Common/Header/Header";
 import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
 import {CampaignEntry} from "./CamapignEntry/CampaignEntry";
-import {useCampaigns} from "../../Context/UseCampaigns";
+import {CampaignContext} from "../../Context/CampaignContext";
 
 export function CampaignSelector(): JSX.Element {
 
 	const [newCampaignName, setNewCampaignName] = useState('');
-	const { campaigns, setCurrentCampaign, createCampaign } = useCampaigns();
+	const { campaigns, setCurrentCampaign, createCampaign } = useContext(CampaignContext);
 
 	return (
 		<div className={'campaign-selector'}>

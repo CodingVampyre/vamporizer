@@ -3,14 +3,14 @@ import './CharacterManager.css';
 import {Header} from "../Common/Header/Header";
 import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {CharacterList} from "./CharacterList/CharacterList";
-import {useCampaigns} from "../../Context/UseCampaigns";
+import {CampaignContext} from "../../Context/CampaignContext";
 
 export function CharacterManager(): JSX.Element {
 
 	const [newCharacterName, setNewCharacterName] = useState<string>('');
-	const { campaigns, currentCampaign, addCharacterDraft } = useCampaigns();
+	const { campaigns, currentCampaign, addCharacterDraft } = useContext(CampaignContext);
 
 	return (
 		<div className={'character-manager'}>

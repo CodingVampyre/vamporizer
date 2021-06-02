@@ -2,11 +2,12 @@ import * as React from 'react';
 import {CampaignSelector} from "../CampaignSelector/CampaignSelector";
 import './Wrapper.css';
 import {CharacterManager} from "../CharacterManager/CharacterManager";
-import {useCampaigns} from "../../Context/UseCampaigns";
+import {useContext} from "react";
+import {CampaignContext} from "../../Context/CampaignContext";
 
 export function Wrapper(): JSX.Element {
 
-	const { currentCampaign } = useCampaigns();
+	const { currentCampaign } = useContext(CampaignContext);
 
 	return (
 		<div className={'wrapper'}>

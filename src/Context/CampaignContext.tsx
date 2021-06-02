@@ -7,11 +7,13 @@ import {createEmptyCharacter} from "../Objects/createEmptyCharacter";
 
 export const CampaignContext = React.createContext<{
 	campaigns: ICampaign[],
+	currentCampaign: number | undefined,
 	createCampaign: (name: string) => unknown,
 	setCurrentCampaign: (index: number) => unknown,
 	addCharacterDraft: (characterName: string) => unknown,
 }>({
 	campaigns: [],
+	currentCampaign: undefined,
 	createCampaign: (name: string) => {},
 	setCurrentCampaign: (index: number) => {},
 	addCharacterDraft: (characterName: string) => {},
@@ -46,6 +48,7 @@ export function App() {
 	return (
 		<CampaignContext.Provider value={{
 			campaigns,
+			currentCampaign,
 			createCampaign,
 			setCurrentCampaign,
 			addCharacterDraft,

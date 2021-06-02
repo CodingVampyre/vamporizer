@@ -11,7 +11,6 @@ export function Wrapper(): JSX.Element {
 
 	return (
 		<div className={'wrapper'}>
-			<p>Current: {currentCampaign}</p>
 			{
 				currentCampaign === undefined && <CampaignSelector /> || <CharacterManager />
 			}

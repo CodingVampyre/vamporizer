@@ -5,7 +5,7 @@ import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
 import {useState} from "react";
 import {CharacterList} from "./CharacterList/CharacterList";
-import {useCampaigns} from "../../Hooks/UseCampaigns";
+import {useCampaigns} from "../../Context/UseCampaigns";
 
 export function CharacterManager(): JSX.Element {
 

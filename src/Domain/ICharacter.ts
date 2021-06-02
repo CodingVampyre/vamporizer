@@ -13,12 +13,12 @@ export interface ICharacter {
 	name: string;
 	player: string;
 	chronicle: string;
-	nature: IArchetype;
-	demeanor: IArchetype;
 	concept: string;
-	clan: IClan;
 	generation: number;
 	sire: string;
+	nature: IArchetype;
+	demeanor: IArchetype;
+	clan: IClan;
 
 	attributes: IAttributes;
 	abilities: IAbilities;

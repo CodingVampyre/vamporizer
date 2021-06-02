@@ -14,10 +14,7 @@ export function CharacterListEntry(props: {
 	return (
 		<div
 			className={'character-list-entry'}
-			onClick={ () => {
-				setCurrentCharacter(props.type);
-				console.log('set to', props.type);
-			} }
+			onClick={ () => setCurrentCharacter(props.type) }
 		>
 			<span className={'character-list-entry-name'}>{props.character.name}</span>
 		</div>

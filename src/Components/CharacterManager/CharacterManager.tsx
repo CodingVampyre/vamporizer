@@ -3,18 +3,15 @@ import './CharacterManager.css';
 import {Header} from "../Common/Header/Header";
 import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import {CharacterList} from "./CharacterList/CharacterList";
 import {CampaignContext} from "../../Context/CampaignContext";
+import {DraftEditor} from "./DraftEditor/DraftEditor";
 
 export function CharacterManager(): JSX.Element {
 
 	const [newCharacterName, setNewCharacterName] = useState<string>('');
 	const { campaigns, currentCampaign, addCharacterDraft, currentCharacter } = useContext(CampaignContext);
-
-	useEffect(() => {
-		console.log(currentCharacter, currentCampaign);
-	})
 
 	return (
 		<div className={'character-manager'}>
@@ -50,6 +47,9 @@ export function CharacterManager(): JSX.Element {
 				) || (
 					<>
 						<Header text={'Character'} />
+						{
+							currentCharacter[1] === 'draft' ? <DraftEditor /> : <div />
+						}
 					</>
 				)
 			}

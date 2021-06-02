@@ -12,6 +12,9 @@
     "plugin:import/warnings",
     "plugin:import/typescript"
   ],
+  "rules": {
+    "@typescript-eslint/no-empty-function": "off"
+  },
   "parser": "@typescript-eslint/parser",
   "settings": {
     "import/resolver": {

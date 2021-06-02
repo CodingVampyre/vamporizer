@@ -2,6 +2,7 @@ import * as React from 'react';
 import './DraftEditor.css';
 import {useContext} from "react";
 import {CampaignContext} from "../../../Context/CampaignContext";
+import {EditableTextField} from "../../Common/EditableField/EditableField";
 
 export function DraftEditor(): JSX.Element {
 
@@ -9,8 +10,10 @@ export function DraftEditor(): JSX.Element {
 
 	return (
 		<div className={'draft-editor'}>
-			<p className={'draft-character-name'}>{ campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name }</p>
-			<p className={'draft-characer-clan'}>{ campaigns[currentCampaign].characterDrafts[currentCharacter[0]].clan.name }</p>
+			<EditableTextField
+				value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name}
+				onConfirm={ (name) => CharacterDraft.setName(name) }
+			/>
 		</div>
 	);
 }

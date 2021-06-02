@@ -69,7 +69,7 @@ export function App() {
 	function setCurrentCharacterDraft(character: ICharacter) {
 		const currentCampaigns = _.cloneDeep(campaigns);
 		currentCampaigns[currentCampaign].characterDrafts[currentCharacter[0]] = character;
-		setCampaigns(campaigns);
+		setCampaigns(currentCampaigns);
 	}
 
 	const CharacterDraft = {

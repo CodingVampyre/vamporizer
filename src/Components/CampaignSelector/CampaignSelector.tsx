@@ -4,7 +4,7 @@ import {Header} from "../Common/Header/Header";
 import {Modal} from "../Common/Modal/Modal";
 import {Input} from "../Common/Input/Input";
 import {CampaignEntry} from "./CamapignEntry/CampaignEntry";
-import {useCampaigns} from "../../Hooks/UseCampaigns";
+import {useCampaigns} from "../../Context/UseCampaigns";
 
 export function CampaignSelector(): JSX.Element {
 

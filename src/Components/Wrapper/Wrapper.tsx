@@ -2,7 +2,7 @@ import * as React from 'react';
 import {CampaignSelector} from "../CampaignSelector/CampaignSelector";
 import './Wrapper.css';
 import {CharacterManager} from "../CharacterManager/CharacterManager";
-import {useCampaigns} from "../../Hooks/UseCampaigns";
+import {useCampaigns} from "../../Context/UseCampaigns";
 
 export function Wrapper(): JSX.Element {
 

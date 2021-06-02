@@ -1,14 +1,26 @@
-import {useState} from "react";
+import * as React from "react";
+import {Wrapper} from "../Components/Wrapper/Wrapper";
 import {ICampaign} from "../Domain/ICampaign";
-import * as _ from 'lodash';
+import {useState} from "react";
+import * as _ from "lodash";
 import {createEmptyCharacter} from "../Objects/createEmptyCharacter";
 
-export function useCampaigns() {
+export const CampaignContext = React.createContext<{
+	campaigns: ICampaign[],
+	createCampaign: (name: string) => unknown,
+	setCurrentCampaign: (index: number) => unknown,
+	addCharacterDraft: (characterName: string) => unknown,
+}>({
+	campaigns: [],
+	createCampaign: (name: string) => {},
+	setCurrentCampaign: (index: number) => {},
+	addCharacterDraft: (characterName: string) => {},
+});
+
+export function App() {
 
 	const [campaigns, setCampaigns] = useState<ICampaign[]>([]);
 	const [currentCampaign, setCurrentCampaign] = useState<number | undefined>(undefined);
-
-	// CAMPAIGN MANAGEMENT
 
 	function createCampaign(name: string): void {
 		setCampaigns(last => {
@@ -31,13 +43,14 @@ export function useCampaigns() {
 		return id;
 	}
 
-	return {
-		campaigns,
-
-		currentCampaign,
-		setCurrentCampaign,
-
-		createCampaign,
-		addCharacterDraft,
-	};
+	return (
+		<CampaignContext.Provider value={{
+			campaigns,
+			createCampaign,
+			setCurrentCampaign,
+			addCharacterDraft,
+		}}>
+			<Wrapper />
+		</CampaignContext.Provider>
+	);
 }

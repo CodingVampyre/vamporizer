@@ -6,6 +6,7 @@ import * as _ from "lodash";
 import {createEmptyCharacter} from "../Objects/createEmptyCharacter";
 import {ICharacter} from "../Domain/ICharacter";
 import {IClan} from "../Domain/IClan";
+import {IArchetype} from "../Domain/IArchetype";
 
 export type CurrentCharacterType = [number, 'draft' | 'character'] | undefined;
 
@@ -21,6 +22,8 @@ export const CampaignContext = React.createContext<{
 		setChronicle: (chronicle: string) => unknown;
 		setSire: (sire: string) => unknown;
 		setConcept: (concept: string) => unknown;
+		setNature: (nature: IArchetype) => unknown;
+		setDemeanor: (demeanor: IArchetype) => unknown;
 	},
 
 	createCampaign: (name: string) => unknown,
@@ -39,6 +42,8 @@ export const CampaignContext = React.createContext<{
 		setChronicle: (chronicle: string) => {},
 		setSire: (sire: string) => {},
 		setConcept: (concept: string) => {},
+		setNature: (nature: IArchetype) => {},
+		setDemeanor: (demeanor: IArchetype) => {},
 	},
 
 	createCampaign: (name: string) => {},
@@ -113,7 +118,17 @@ export function App() {
 			const character = retrieveCurrentCharacterDraft();
 			character.concept = concept;
 			setCurrentCharacterDraft(character);
-		}
+		},
+		setNature(nature: IArchetype) {
+			const character = retrieveCurrentCharacterDraft();
+			character.nature = nature;
+			setCurrentCharacterDraft(character);
+		},
+		setDemeanor(demeanor: IArchetype) {
+			const character = retrieveCurrentCharacterDraft();
+			character.demeanor = demeanor;
+			setCurrentCharacterDraft(character);
+		},
 	};
 
 	return (

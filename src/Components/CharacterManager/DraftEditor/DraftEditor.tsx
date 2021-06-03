@@ -6,6 +6,7 @@ import {EditableTextField} from "../../Common/EditableField/EditableField";
 import {EditableListField} from "../../Common/EditableField/EditableListField";
 import {Clans} from "../../../Objects/Clans";
 import {Category} from "../../Common/Category/Category";
+import {Archetypes} from "../../../Objects/Archetypes";
 
 export function DraftEditor(): JSX.Element {
 
@@ -44,6 +45,18 @@ export function DraftEditor(): JSX.Element {
 					caption={'Concept:'}
 					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].concept}
 					onConfirm={ (value) => CharacterDraft.setConcept(value) }
+				/>
+				<EditableListField
+					caption={'Nature:'}
+					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].nature}
+					list={Archetypes}
+					onSelect={ (value) => CharacterDraft.setNature(value) }
+				/>
+				<EditableListField
+					caption={'Demeanor:'}
+					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].demeanor}
+					list={Archetypes}
+					onSelect={ (value) => CharacterDraft.setDemeanor(value) }
 				/>
 			</Category>
 		</div>

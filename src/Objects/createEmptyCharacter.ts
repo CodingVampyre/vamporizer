@@ -1,6 +1,7 @@
 import {ICharacter} from "../Domain/ICharacter";
 import {PathsEnum} from "./PathEnum";
 import {ClanType} from "../Domain/IClan";
+import {Archetypes} from "./Archetypes";
 
 export function createEmptyCharacter(name: string, campaign: string): ICharacter {
 	return {
@@ -75,13 +76,13 @@ export function createEmptyCharacter(name: string, campaign: string): ICharacter
 		chronicle: campaign,
 		clan: { name: '', weakness: undefined, type: ClanType.CLAN },
 		concept: '',
-		demeanor: undefined,
+		demeanor: Archetypes[0],
 		experience: 0,
 		generation: 13,
 		health: { max: 8, current: 8 }, // TODO use numbered enum
 		inventory: [],
 		meritsFlaws: [],
-		nature: undefined,
+		nature: Archetypes[0],
 		path: {
 			name: PathsEnum.HUMANITY,
 			level: 0,

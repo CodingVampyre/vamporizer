@@ -16,22 +16,22 @@ export function CharacterManager(): JSX.Element {
 	return (
 		<div className={'character-manager'}>
 			<Header text={campaigns[currentCampaign].name} />
-			<Modal
-				openButtonText={'Create Character'}
-				closeButtonText={'Create'}
-				abortButtonText={'Abort'}
-				onModalConfirm={ () => addCharacterDraft(newCharacterName) }
-			>
-				<Header text={'Create Character'} />
-				<Input
-					onChange={ (text) => setNewCharacterName(text) }
-					text={ newCharacterName }
-				/>
-			</Modal>
 
 			{
 				!currentCharacter && (
 					<>
+						<Modal
+							openButtonText={'Create Character'}
+							closeButtonText={'Create'}
+							abortButtonText={'Abort'}
+							onModalConfirm={ () => addCharacterDraft(newCharacterName) }
+						>
+							<Header text={'Create Character'} />
+							<Input
+								onChange={ (text) => setNewCharacterName(text) }
+								text={ newCharacterName }
+							/>
+						</Modal>
 						<Header text={'Characters'} />
 						<CharacterList
 							characters={campaigns[currentCampaign].characters}

@@ -5,6 +5,7 @@ import {Button} from "../Button/Button";
 import {Input} from "../Input/Input";
 
 export function EditableTextField(props: {
+	caption: string;
 	value: string;
 	onConfirm: (text: string) => unknown;
 }): JSX.Element {
@@ -16,7 +17,7 @@ export function EditableTextField(props: {
 		<div className={'editable-text-field'}>
 			{ !editMode ? (
 				<div>
-					<span className={'editable-text-field-text'}>{ props.value }</span>
+					<span className={'editable-text-field-text'}>{props.caption} { props.value }</span>
 					<Button text={'Edit'} onClick={ () => setEditMode(true) } />
 				</div>
 			) : (

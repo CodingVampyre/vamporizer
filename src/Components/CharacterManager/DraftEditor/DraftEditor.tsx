@@ -13,7 +13,8 @@ export function DraftEditor(): JSX.Element {
 	return (
 		<div className={'draft-editor'}>
 			<EditableTextField
-				value={'Name: ' + campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name}
+				caption={'Name:'}
+				value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name}
 				onConfirm={ (name) => CharacterDraft.setName(name) }
 			/>
 			<EditableListField

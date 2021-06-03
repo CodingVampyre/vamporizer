@@ -5,3 +5,18 @@
 .editable-list-field-edit {
 	display: flex;
 }
+
+.editable-list-field-select {
+	background: none;
+	border: 2px solid white;
+	border-radius: 8px;
+	color: white;
+}
+
+.editable-list-field-option {
+	color: #eee;
+	font-family: 'GoudyRegular', sans-serif;
+	background: #444;
+	border-radius: 8px;
+	border: 2px solid white;
+}

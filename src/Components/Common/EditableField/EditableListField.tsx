@@ -23,9 +23,12 @@ export function EditableListField(props: {
 					</div>
 				) : (
 					<div className={'editable-list-field-edit'}>
-						<select onChange={(value) => setSelected(value.target.value)}>
+						<select
+							className={'editable-list-field-select'}
+							onChange={(value) => setSelected(value.target.value)}
+						>
 							{
-								props.list.map((entry, index) => <option key={index}>{ entry['name'] }</option>)
+								props.list.map((entry, index) => <option className={'editable-list-field-option'} key={index}>{ entry['name'] }</option>)
 							}
 						</ select>
 						<Button text={'Save'} onClick={ () => {

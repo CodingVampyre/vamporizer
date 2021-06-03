@@ -5,6 +5,7 @@ import {CampaignContext} from "../../../Context/CampaignContext";
 import {EditableTextField} from "../../Common/EditableField/EditableField";
 import {EditableListField} from "../../Common/EditableField/EditableListField";
 import {Clans} from "../../../Objects/Clans";
+import {Category} from "../../Common/Category/Category";
 
 export function DraftEditor(): JSX.Element {
 
@@ -12,17 +13,19 @@ export function DraftEditor(): JSX.Element {
 
 	return (
 		<div className={'draft-editor'}>
-			<EditableTextField
-				caption={'Name:'}
-				value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name}
-				onConfirm={ (name) => CharacterDraft.setName(name) }
-			/>
-			<EditableListField
-				caption={'Clan:'}
-				value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].clan}
-				list={Clans}
-				onSelect={ (value) => CharacterDraft.setClan(value) }
-			/>
+			<Category>
+				<EditableTextField
+					caption={'Name:'}
+					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name}
+					onConfirm={ (name) => CharacterDraft.setName(name) }
+				/>
+				<EditableListField
+					caption={'Clan:'}
+					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].clan}
+					list={Clans}
+					onSelect={ (value) => CharacterDraft.setClan(value) }
+				/>
+			</Category>
 		</div>
 	);
 }

@@ -17,6 +17,10 @@ export const CampaignContext = React.createContext<{
 	CharacterDraft: {
 		setName: (name: string) => unknown;
 		setClan: (clan: IClan) => unknown;
+		setPlayer: (player: string) => unknown;
+		setChronicle: (chronicle: string) => unknown;
+		setSire: (sire: string) => unknown;
+		setConcept: (concept: string) => unknown;
 	},
 
 	createCampaign: (name: string) => unknown,
@@ -31,6 +35,10 @@ export const CampaignContext = React.createContext<{
 	CharacterDraft: {
 		setName: (name: string) => {},
 		setClan: (clan: IClan) => {},
+		setPlayer: (player: string) => {},
+		setChronicle: (chronicle: string) => {},
+		setSire: (sire: string) => {},
+		setConcept: (concept: string) => {},
 	},
 
 	createCampaign: (name: string) => {},
@@ -84,6 +92,26 @@ export function App() {
 		setClan(clan: IClan) {
 			const character = retrieveCurrentCharacterDraft();
 			character.clan = clan;
+			setCurrentCharacterDraft(character);
+		},
+		setPlayer(player: string) {
+			const character = retrieveCurrentCharacterDraft();
+			character.player = player;
+			setCurrentCharacterDraft(character);
+		},
+		setChronicle(chronicle: string) {
+			const character = retrieveCurrentCharacterDraft();
+			character.chronicle = chronicle;
+			setCurrentCharacterDraft(character);
+		},
+		setSire(sire: string) {
+			const character = retrieveCurrentCharacterDraft();
+			character.sire = sire;
+			setCurrentCharacterDraft(character);
+		},
+		setConcept(concept: string) {
+			const character = retrieveCurrentCharacterDraft();
+			character.concept = concept;
 			setCurrentCharacterDraft(character);
 		}
 	};

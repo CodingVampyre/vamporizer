@@ -25,6 +25,26 @@ export function DraftEditor(): JSX.Element {
 					list={Clans}
 					onSelect={ (value) => CharacterDraft.setClan(value) }
 				/>
+				<EditableTextField
+					caption={'Player:'}
+					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].player}
+					onConfirm={ (value) => CharacterDraft.setPlayer(value) }
+				/>
+				<EditableTextField
+					caption={'Chronicle:'}
+					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].chronicle}
+					onConfirm={ (value) => CharacterDraft.setChronicle(value) }
+				/>
+				<EditableTextField
+					caption={'Sire:'}
+					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].sire}
+					onConfirm={ (value) => CharacterDraft.setSire(value) }
+				/>
+				<EditableTextField
+					caption={'Concept:'}
+					value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].concept}
+					onConfirm={ (value) => CharacterDraft.setConcept(value) }
+				/>
 			</Category>
 		</div>
 	);

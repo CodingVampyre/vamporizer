@@ -7,6 +7,7 @@ import {EditableListField} from "../../Common/EditableField/EditableListField";
 import {Clans} from "../../../Objects/Clans";
 import {Category} from "../../Common/Category/Category";
 import {Archetypes} from "../../../Objects/Archetypes";
+import {Header} from "../../Common/Header/Header";
 
 export function DraftEditor(): JSX.Element {
 
@@ -58,6 +59,10 @@ export function DraftEditor(): JSX.Element {
 					list={Archetypes}
 					onSelect={ (value) => CharacterDraft.setDemeanor(value) }
 				/>
+			</Category>
+
+			<Category>
+				<Header text={'Attributes'} />
 			</Category>
 		</div>
 	);

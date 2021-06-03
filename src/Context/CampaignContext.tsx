@@ -5,6 +5,7 @@ import {useState} from "react";
 import * as _ from "lodash";
 import {createEmptyCharacter} from "../Objects/createEmptyCharacter";
 import {ICharacter} from "../Domain/ICharacter";
+import {IClan} from "../Domain/IClan";
 
 export type CurrentCharacterType = [number, 'draft' | 'character'] | undefined;
 
@@ -15,6 +16,7 @@ export const CampaignContext = React.createContext<{
 
 	CharacterDraft: {
 		setName: (name: string) => unknown;
+		setClan: (clan: IClan) => unknown;
 	},
 
 	createCampaign: (name: string) => unknown,
@@ -27,7 +29,8 @@ export const CampaignContext = React.createContext<{
 	currentCharacter: [undefined, undefined],
 
 	CharacterDraft: {
-		setName: (name: string) => {}
+		setName: (name: string) => {},
+		setClan: (clan: IClan) => {},
 	},
 
 	createCampaign: (name: string) => {},
@@ -76,6 +79,11 @@ export function App() {
 		setName(name: string) {
 			const character = retrieveCurrentCharacterDraft();
 			character.name = name;
+			setCurrentCharacterDraft(character);
+		},
+		setClan(clan: IClan) {
+			const character = retrieveCurrentCharacterDraft();
+			character.clan = clan;
 			setCurrentCharacterDraft(character);
 		}
 	};

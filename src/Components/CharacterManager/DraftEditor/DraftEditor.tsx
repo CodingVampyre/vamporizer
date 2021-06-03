@@ -13,15 +13,14 @@ export function DraftEditor(): JSX.Element {
 	return (
 		<div className={'draft-editor'}>
 			<EditableTextField
-				value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name}
+				value={'Name: ' + campaigns[currentCampaign].characterDrafts[currentCharacter[0]].name}
 				onConfirm={ (name) => CharacterDraft.setName(name) }
 			/>
 			<EditableListField
-				value={Clans[0]}
+				caption={'Clan:'}
+				value={campaigns[currentCampaign].characterDrafts[currentCharacter[0]].clan}
 				list={Clans}
-				onSelect={ (value) => {
-					console.log('selected', value);
-				} }
+				onSelect={ (value) => CharacterDraft.setClan(value) }
 			/>
 		</div>
 	);

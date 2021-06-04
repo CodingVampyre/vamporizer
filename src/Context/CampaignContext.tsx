@@ -11,8 +11,7 @@ import {IArchetype} from "../Domain/IArchetype";
 export type CurrentCharacterType = [number, 'draft' | 'character'] | undefined;
 
 export const CampaignContext = React.createContext<{
-	campaigns: ICampaign[],
-	currentCampaign: number | undefined,
+	campaign: ICampaign,
 	currentCharacter: CurrentCharacterType,
 
 	CharacterDraft: {
@@ -26,13 +25,10 @@ export const CampaignContext = React.createContext<{
 		setDemeanor: (demeanor: IArchetype) => unknown;
 	},
 
-	createCampaign: (name: string) => unknown,
-	setCurrentCampaign: (index: number) => unknown,
 	addCharacterDraft: (characterName: string) => unknown,
 	setCurrentCharacter: (current: CurrentCharacterType) => unknown,
 }>({
-	campaigns: [],
-	currentCampaign: undefined,
+	campaign: { name: '', characters: [], characterDrafts: [] },
 	currentCharacter: [undefined, undefined],
 
 	CharacterDraft: {
@@ -46,46 +42,34 @@ export const CampaignContext = React.createContext<{
 		setDemeanor: (demeanor: IArchetype) => {},
 	},
 
-	createCampaign: (name: string) => {},
-	setCurrentCampaign: (index: number) => {},
 	addCharacterDraft: (characterName: string) => {},
 	setCurrentCharacter: (current: CurrentCharacterType) => {},
 });
 
-export function App() {
+export function App(): JSX.Element {
 
-	const [campaigns, setCampaigns] = useState<ICampaign[]>([]);
-	const [currentCampaign, setCurrentCampaign] = useState<number | undefined>(undefined);
+	const [campaign, setCampaign] = useState<ICampaign>({ name: 'New Campaign', characterDrafts: [], characters: [] });
 	const [currentCharacter, setCurrentCharacter] = useState<CurrentCharacterType>(undefined);
-
-	function createCampaign(name: string): void {
-		setCampaigns(last => {
-			const campaigns = _.cloneDeep(last);
-			campaigns.push({ characterDrafts: [], characters: [], name });
-			return campaigns;
-		});
-	}
 
 	// CHARACTERS
 
 	function addCharacterDraft(characterName: string): number {
 		let id;
-		setCampaigns(last => {
-			const campaigns = _.cloneDeep(last);
-			const campaign = campaigns[currentCampaign];
-			id = campaign.characterDrafts.push(createEmptyCharacter(characterName, campaign.name));
-			return campaigns;
+		setCampaign(last => {
+			const current = _.cloneDeep(last);
+			id = current.characterDrafts.push(createEmptyCharacter(characterName, campaign.name));
+			return current;
 		});
 		return id;
 	}
 
 	function retrieveCurrentCharacterDraft(): ICharacter {
-		return _.cloneDeep(campaigns[currentCampaign].characterDrafts[currentCharacter[0]]);
+		return _.cloneDeep(campaign.characterDrafts[currentCharacter[0]]);
 	}
 	function setCurrentCharacterDraft(character: ICharacter) {
-		const currentCampaigns = _.cloneDeep(campaigns);
-		currentCampaigns[currentCampaign].characterDrafts[currentCharacter[0]] = character;
-		setCampaigns(currentCampaigns);
+		const current = _.cloneDeep(campaign);
+		current.characterDrafts[currentCharacter[0]] = character;
+		setCampaign(current);
 	}
 
 	const CharacterDraft = {
@@ -133,14 +117,11 @@ export function App() {
 
 	return (
 		<CampaignContext.Provider value={{
-			campaigns,
-			currentCampaign,
+			campaign,
 			currentCharacter,
 
 			CharacterDraft,
 
-			createCampaign,
-			setCurrentCampaign,
 			addCharacterDraft,
 			setCurrentCharacter,
 		}}>

@@ -11,11 +11,11 @@ import {DraftEditor} from "./DraftEditor/DraftEditor";
 export function CharacterManager(): JSX.Element {
 
 	const [newCharacterName, setNewCharacterName] = useState<string>('');
-	const { campaigns, currentCampaign, addCharacterDraft, currentCharacter } = useContext(CampaignContext);
+	const { campaign, addCharacterDraft, currentCharacter } = useContext(CampaignContext);
 
 	return (
 		<div className={'character-manager'}>
-			<Header text={campaigns[currentCampaign].name} />
+			<Header text={campaign.name} />
 
 			{
 				!currentCharacter && (
@@ -34,13 +34,13 @@ export function CharacterManager(): JSX.Element {
 						</Modal>
 						<Header text={'Characters'} />
 						<CharacterList
-							characters={campaigns[currentCampaign].characters}
+							characters={campaign.characters}
 							type={'character'}
 						/>
 
 						<Header text={'Drafts'} />
 						<CharacterList
-							characters={campaigns[currentCampaign].characterDrafts}
+							characters={campaign.characterDrafts}
 							type={'draft'}
 						/>
 					</>

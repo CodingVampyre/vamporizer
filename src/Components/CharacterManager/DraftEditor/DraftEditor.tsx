@@ -18,44 +18,44 @@ export function DraftEditor(): JSX.Element {
 			<Category>
 				<EditableTextField
 					caption={'Name:'}
-					value={campaign.characterDrafts[currentCharacter[0]].name}
+					value={campaign.characterDrafts[currentCharacter[0]].character.name}
 					onConfirm={ (name) => CharacterDraft.setName(name) }
 				/>
 				<EditableListField
 					caption={'Clan:'}
-					value={campaign.characterDrafts[currentCharacter[0]].clan}
+					value={campaign.characterDrafts[currentCharacter[0]].character.clan}
 					list={Clans}
 					onSelect={ (value) => CharacterDraft.setClan(value) }
 				/>
 				<EditableTextField
 					caption={'Player:'}
-					value={campaign.characterDrafts[currentCharacter[0]].player}
+					value={campaign.characterDrafts[currentCharacter[0]].character.player}
 					onConfirm={ (value) => CharacterDraft.setPlayer(value) }
 				/>
 				<EditableTextField
 					caption={'Chronicle:'}
-					value={campaign.characterDrafts[currentCharacter[0]].chronicle}
+					value={campaign.characterDrafts[currentCharacter[0]].character.chronicle}
 					onConfirm={ (value) => CharacterDraft.setChronicle(value) }
 				/>
 				<EditableTextField
 					caption={'Sire:'}
-					value={campaign.characterDrafts[currentCharacter[0]].sire}
+					value={campaign.characterDrafts[currentCharacter[0]].character.sire}
 					onConfirm={ (value) => CharacterDraft.setSire(value) }
 				/>
 				<EditableTextField
 					caption={'Concept:'}
-					value={campaign.characterDrafts[currentCharacter[0]].concept}
+					value={campaign.characterDrafts[currentCharacter[0]].character.concept}
 					onConfirm={ (value) => CharacterDraft.setConcept(value) }
 				/>
 				<EditableListField
 					caption={'Nature:'}
-					value={campaign.characterDrafts[currentCharacter[0]].nature}
+					value={campaign.characterDrafts[currentCharacter[0]].character.nature}
 					list={Archetypes}
 					onSelect={ (value) => CharacterDraft.setNature(value) }
 				/>
 				<EditableListField
 					caption={'Demeanor:'}
-					value={campaign.characterDrafts[currentCharacter[0]].demeanor}
+					value={campaign.characterDrafts[currentCharacter[0]].character.demeanor}
 					list={Archetypes}
 					onSelect={ (value) => CharacterDraft.setDemeanor(value) }
 				/>

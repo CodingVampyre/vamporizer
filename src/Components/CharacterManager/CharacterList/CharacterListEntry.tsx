@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './CharacterListEntry.css';
 import {ICharacter} from "../../../Domain/ICharacter";
-import {CampaignContext, CurrentCharacterType} from "../../../Context/CampaignContext";
+import {CampaignContext, TCurrentCharacter} from "../../../Context/CampaignContext";
 import {useContext} from "react";
 
 export function CharacterListEntry(props: {
 	character: ICharacter;
-	type: CurrentCharacterType;
+	type: TCurrentCharacter;
 }): JSX.Element {
 
 	const { setCurrentCharacter } = useContext(CampaignContext);

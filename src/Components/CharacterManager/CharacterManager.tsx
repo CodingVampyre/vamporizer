@@ -40,7 +40,7 @@ export function CharacterManager(): JSX.Element {
 
 						<Header text={'Drafts'} />
 						<CharacterList
-							characters={campaign.characterDrafts}
+							characters={campaign.characterDrafts.map(draft => draft.character)}
 							type={'draft'}
 						/>
 					</>

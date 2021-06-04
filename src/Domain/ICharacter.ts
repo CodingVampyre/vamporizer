@@ -7,6 +7,7 @@ import {IAdvantages} from "./IAdvantages";
 import {IMeritFlaw} from "./IMeritFlaw";
 import {IPath} from "./IPath";
 import {IPool} from "./IPool";
+import {IDraftParams} from "./IDraftParams";
 
 export interface ICharacter {
 	// Sheet
@@ -34,4 +35,10 @@ export interface ICharacter {
 	// Additional
 	inventory: unknown;
 	background: string;
+}
+
+/** used to create new characters */
+export interface ICharacterDraft {
+	character: ICharacter;
+	draftParams: IDraftParams;
 }

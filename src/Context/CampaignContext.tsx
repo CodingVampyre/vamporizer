@@ -3,16 +3,16 @@ import {Wrapper} from "../Components/Wrapper/Wrapper";
 import {ICampaign} from "../Domain/ICampaign";
 import {useState} from "react";
 import * as _ from "lodash";
-import {createEmptyCharacter} from "../Objects/createEmptyCharacter";
-import {ICharacter} from "../Domain/ICharacter";
+import {createDraftParams, createEmptyCharacter} from "../Objects/createEmptyCharacter";
+import {ICharacterDraft} from "../Domain/ICharacter";
 import {IClan} from "../Domain/IClan";
 import {IArchetype} from "../Domain/IArchetype";
 
-export type CurrentCharacterType = [number, 'draft' | 'character'] | undefined;
+export type TCurrentCharacter = [number, 'draft' | 'character'] | undefined;
 
 export const CampaignContext = React.createContext<{
 	campaign: ICampaign,
-	currentCharacter: CurrentCharacterType,
+	currentCharacter: TCurrentCharacter,
 
 	CharacterDraft: {
 		setName: (name: string) => unknown;
@@ -26,7 +26,7 @@ export const CampaignContext = React.createContext<{
 	},
 
 	addCharacterDraft: (characterName: string) => unknown,
-	setCurrentCharacter: (current: CurrentCharacterType) => unknown,
+	setCurrentCharacter: (current: TCurrentCharacter) => unknown,
 }>({
 	campaign: { name: '', characters: [], characterDrafts: [] },
 	currentCharacter: [undefined, undefined],
@@ -43,13 +43,13 @@ export const CampaignContext = React.createContext<{
 	},
 
 	addCharacterDraft: (characterName: string) => {},
-	setCurrentCharacter: (current: CurrentCharacterType) => {},
+	setCurrentCharacter: (current: TCurrentCharacter) => {},
 });
 
 export function App(): JSX.Element {
 
 	const [campaign, setCampaign] = useState<ICampaign>({ name: 'New Campaign', characterDrafts: [], characters: [] });
-	const [currentCharacter, setCurrentCharacter] = useState<CurrentCharacterType>(undefined);
+	const [currentCharacter, setCurrentCharacter] = useState<TCurrentCharacter>(undefined);
 
 	// CHARACTERS
 
@@ -57,16 +57,18 @@ export function App(): JSX.Element {
 		let id;
 		setCampaign(last => {
 			const current = _.cloneDeep(last);
-			id = current.characterDrafts.push(createEmptyCharacter(characterName, campaign.name));
+			const character = createEmptyCharacter(characterName, campaign.name);
+			const draftParams = createDraftParams();
+			id = current.characterDrafts.push({ character, draftParams });
 			return current;
 		});
 		return id;
 	}
 
-	function retrieveCurrentCharacterDraft(): ICharacter {
+	function retrieveCurrentCharacterDraft(): ICharacterDraft {
 		return _.cloneDeep(campaign.characterDrafts[currentCharacter[0]]);
 	}
-	function setCurrentCharacterDraft(character: ICharacter) {
+	function setCurrentCharacterDraft(character: ICharacterDraft) {
 		const current = _.cloneDeep(campaign);
 		current.characterDrafts[currentCharacter[0]] = character;
 		setCampaign(current);
@@ -74,44 +76,44 @@ export function App(): JSX.Element {
 
 	const CharacterDraft = {
 		setName(name: string) {
-			const character = retrieveCurrentCharacterDraft();
-			character.name = name;
-			setCurrentCharacterDraft(character);
+			const draft = retrieveCurrentCharacterDraft();
+			draft.character.name = name;
+			setCurrentCharacterDraft(draft);
 		},
 		setClan(clan: IClan) {
-			const character = retrieveCurrentCharacterDraft();
-			character.clan = clan;
-			setCurrentCharacterDraft(character);
+			const draft = retrieveCurrentCharacterDraft();
+			draft.character.clan = clan;
+			setCurrentCharacterDraft(draft);
 		},
 		setPlayer(player: string) {
-			const character = retrieveCurrentCharacterDraft();
-			character.player = player;
-			setCurrentCharacterDraft(character);
+			const draft = retrieveCurrentCharacterDraft();
+			draft.character.player = player;
+			setCurrentCharacterDraft(draft);
 		},
 		setChronicle(chronicle: string) {
-			const character = retrieveCurrentCharacterDraft();
-			character.chronicle = chronicle;
-			setCurrentCharacterDraft(character);
+			const draft = retrieveCurrentCharacterDraft();
+			draft.character.chronicle = chronicle;
+			setCurrentCharacterDraft(draft);
 		},
 		setSire(sire: string) {
-			const character = retrieveCurrentCharacterDraft();
-			character.sire = sire;
-			setCurrentCharacterDraft(character);
+			const draft = retrieveCurrentCharacterDraft();
+			draft.character.sire = sire;
+			setCurrentCharacterDraft(draft);
 		},
 		setConcept(concept: string) {
-			const character = retrieveCurrentCharacterDraft();
-			character.concept = concept;
-			setCurrentCharacterDraft(character);
+			const draft = retrieveCurrentCharacterDraft();
+			draft.character.concept = concept;
+			setCurrentCharacterDraft(draft);
 		},
 		setNature(nature: IArchetype) {
-			const character = retrieveCurrentCharacterDraft();
-			character.nature = nature;
-			setCurrentCharacterDraft(character);
+			const draft = retrieveCurrentCharacterDraft();
+			draft.character.nature = nature;
+			setCurrentCharacterDraft(draft);
 		},
 		setDemeanor(demeanor: IArchetype) {
-			const character = retrieveCurrentCharacterDraft();
-			character.demeanor = demeanor;
-			setCurrentCharacterDraft(character);
+			const draft = retrieveCurrentCharacterDraft();
+			draft.character.demeanor = demeanor;
+			setCurrentCharacterDraft(draft);
 		},
 	};
 

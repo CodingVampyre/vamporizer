@@ -5,6 +5,7 @@ import {Archetypes} from "./Archetypes";
 import {Knowledges, Skills, Talents} from "./Abilities";
 import * as _ from 'lodash';
 import {Mental, Physical, Social} from "./Attributes";
+import {IDraftParams} from "../Domain/IDraftParams";
 
 export function createEmptyCharacter(name: string, campaign: string): ICharacter {
 	return {

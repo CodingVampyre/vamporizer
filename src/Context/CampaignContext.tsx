@@ -23,6 +23,10 @@ export const CampaignContext = React.createContext<{
 		setConcept: (concept: string) => unknown;
 		setNature: (nature: IArchetype) => unknown;
 		setDemeanor: (demeanor: IArchetype) => unknown;
+		setAttributePointRelation: (options: { physical: number, social: number, mental: number }) => unknown;
+		resetAttributePointRelation: () => unknown;
+		setAbilityPointRelation: (options: { talents: number, skills: number, knowledges: number }) => unknown;
+		resetAbilityPointRelation: () => unknown;
 	},
 
 	addCharacterDraft: (characterName: string) => unknown,
@@ -40,6 +44,10 @@ export const CampaignContext = React.createContext<{
 		setConcept: (concept: string) => {},
 		setNature: (nature: IArchetype) => {},
 		setDemeanor: (demeanor: IArchetype) => {},
+		setAttributePointRelation: (options: { physical: number, social: number, mental: number }) => {},
+		resetAttributePointRelation: () => {},
+		setAbilityPointRelation: (options: { talents: number, skills: number, knowledges: number }) => {},
+		resetAbilityPointRelation: () => {},
 	},
 
 	addCharacterDraft: (characterName: string) => {},
@@ -115,6 +123,34 @@ export function App(): JSX.Element {
 			draft.character.demeanor = demeanor;
 			setCurrentCharacterDraft(draft);
 		},
+		setAttributePointRelation(options: {physical: number, social: number, mental: number}) {
+			const draft = retrieveCurrentCharacterDraft();
+			draft.draftParams.attributePoints.mental = options.mental;
+			draft.draftParams.attributePoints.social = options.social;
+			draft.draftParams.attributePoints.physical = options.physical;
+			setCurrentCharacterDraft(draft);
+		},
+		resetAttributePointRelation() {
+			const draft = retrieveCurrentCharacterDraft();
+			draft.draftParams.attributePoints.mental = 0;
+			draft.draftParams.attributePoints.physical = 0;
+			draft.draftParams.attributePoints.social = 0;
+			setCurrentCharacterDraft(draft);
+		},
+		setAbilityPointRelation(options: { talents: number; skills: number; knowledges: number }) {
+			const draft = retrieveCurrentCharacterDraft();
+			draft.draftParams.abilityPoints.skills = options.skills;
+			draft.draftParams.abilityPoints.talents = options.talents;
+			draft.draftParams.abilityPoints.knowledges = options.knowledges;
+			setCurrentCharacterDraft(draft);
+		},
+		resetAbilityPointRelation() {
+			const draft = retrieveCurrentCharacterDraft();
+			draft.draftParams.abilityPoints.skills = 0;
+			draft.draftParams.abilityPoints.talents = 0;
+			draft.draftParams.abilityPoints.knowledges = 0;
+			setCurrentCharacterDraft(draft);
+		}
 	};
 
 	return (

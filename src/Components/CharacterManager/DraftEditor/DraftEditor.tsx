@@ -8,6 +8,7 @@ import {Clans} from "../../../Objects/Clans";
 import {Category} from "../../Common/Category/Category";
 import {Archetypes} from "../../../Objects/Archetypes";
 import {Header} from "../../Common/Header/Header";
+import {AttributeManager} from "./AttributeManager";
 
 export function DraftEditor(): JSX.Element {
 
@@ -63,6 +64,7 @@ export function DraftEditor(): JSX.Element {
 
 			<Category>
 				<Header text={'Attributes'} />
+				<AttributeManager />
 			</Category>
 		</div>
 	);

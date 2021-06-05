@@ -32,12 +32,20 @@ export function AttributeManager(): JSX.Element {
 					campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.pointsGiven ? (
 						<>
 							<ColumnPointManager
-								name={'Physical'}
+								name={`Physical (${campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.physical})`}
 								columns={campaign.characterDrafts[currentCharacter[0]].character.attributes.physical}
 								availablePoints={campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.physical}
 							/>
-							<Header text={'Social'} />
-							<Header text={'Mental'} />
+							<ColumnPointManager
+								name={`Social (${campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.social})`}
+								columns={campaign.characterDrafts[currentCharacter[0]].character.attributes.social}
+								availablePoints={campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.social}
+							/>
+							<ColumnPointManager
+								name={`Mental (${campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.mental})`}
+								columns={campaign.characterDrafts[currentCharacter[0]].character.attributes.mental}
+								availablePoints={campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.mental}
+							/>
 						</>
 					) : (
 						<>

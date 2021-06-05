@@ -21,8 +21,8 @@ export function ColumnPointManager(props: {
 					<div key={index}>
 						<ColumnPoints
 							availablePoints={props.availablePoints}
-							onSet={ (selected, remaining) => {
-								console.log(`Chose ${selected} (${remaining}) remaining`);
+							onSet={ (selected) => {
+								console.log(`Chose ${selected}`);
 							} }
 							perk={column}
 						/>

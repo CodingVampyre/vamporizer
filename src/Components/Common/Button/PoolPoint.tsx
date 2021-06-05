@@ -6,6 +6,9 @@ export function PoolPoint(props: {
 	filledIn: boolean;
 }): JSX.Element {
 	return (
-		<div className={`pool-point ${ props.filledIn ? 'pool-point-filled' : 'pool-point-empty' }`} />
+		<div
+			className={`pool-point ${ props.filledIn ? 'pool-point-filled' : 'pool-point-empty' }`}
+			onClick={ props.onClick }
+		/>
 	);
 }

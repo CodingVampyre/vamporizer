@@ -1,20 +1,17 @@
 import * as React from 'react';
 import './AttributeManager.css';
-import {useContext, useEffect} from "react";
-import {CampaignContext} from "../../../Context/CampaignContext";
-import {Header} from "../../Common/Header/Header";
-import {PerkColumnPointSetter, PropertySet} from "./PerkColumnPointSetter/PerkColumnPointSetter";
+import {useContext} from "react";
+import {CampaignContext} from "../../../../Context/CampaignContext";
+import {Header} from "../../../Common/Header/Header";
+import {PerkColumnPointSetter, PropertySet} from "../PerkColumnPointSetter/PerkColumnPointSetter";
+import {ColumnPointManager} from "../ColumnPointManager/ColumnPointManager";
 
 export function AttributeManager(): JSX.Element {
 
 	const { campaign, currentCharacter, CharacterDraft } = useContext(CampaignContext);
 
 	function storeAttributePoints(set: PropertySet) {
-		const results = {
-			physical: 0,
-			social: 0,
-			mental: 0,
-		}
+		const results = { physical: 0, social: 0, mental: 0, };
 
 		for (const property of set) {
 			switch (property.name) {
@@ -34,7 +31,11 @@ export function AttributeManager(): JSX.Element {
 				{
 					campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.pointsGiven ? (
 						<>
-							<Header text={'Physical'} />
+							<ColumnPointManager
+								name={'Physical'}
+								columns={campaign.characterDrafts[currentCharacter[0]].character.attributes.physical}
+								availablePoints={campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.physical}
+							/>
 							<Header text={'Social'} />
 							<Header text={'Mental'} />
 						</>

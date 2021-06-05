@@ -1,0 +1,11 @@
+.column-points {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.column-points > * {
+    margin: 2px;
+}

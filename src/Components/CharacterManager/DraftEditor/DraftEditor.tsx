@@ -8,7 +8,7 @@ import {Clans} from "../../../Objects/Clans";
 import {Category} from "../../Common/Category/Category";
 import {Archetypes} from "../../../Objects/Archetypes";
 import {Header} from "../../Common/Header/Header";
-import {AttributeManager} from "./AttributeManager";
+import {AttributeManager} from "./AttributeManager/AttributeManager";
 
 export function DraftEditor(): JSX.Element {
 

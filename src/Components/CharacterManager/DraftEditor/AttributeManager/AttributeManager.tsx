@@ -35,16 +35,19 @@ export function AttributeManager(): JSX.Element {
 								name={`Physical (${campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.physical})`}
 								columns={campaign.characterDrafts[currentCharacter[0]].character.attributes.physical}
 								availablePoints={campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.physical}
+								onSelectValue={ (valueIndex, height) =>  console.log(valueIndex, height)}
 							/>
 							<ColumnPointManager
 								name={`Social (${campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.social})`}
 								columns={campaign.characterDrafts[currentCharacter[0]].character.attributes.social}
 								availablePoints={campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.social}
+								onSelectValue={ (valueIndex, height) =>  console.log(valueIndex, height)}
 							/>
 							<ColumnPointManager
 								name={`Mental (${campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.mental})`}
 								columns={campaign.characterDrafts[currentCharacter[0]].character.attributes.mental}
 								availablePoints={campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.mental}
+								onSelectValue={ (valueIndex, height) =>  console.log(valueIndex, height)}
 							/>
 						</>
 					) : (

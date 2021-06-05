@@ -6,10 +6,9 @@ import * as _ from 'lodash';
 
 export function ColumnPoints(props: {
 	availablePoints: number;
-	onSet: (selectedPoints: number) => unknown;
+	onClick: (selectedPoints: number) => unknown;
 	perk: IPerk;
 }): JSX.Element {
-
 	return (
 		<div className={'column-points'}>
 			<span>{ props.perk.name }</span>
@@ -17,9 +16,7 @@ export function ColumnPoints(props: {
 				_.times(5, i => (
 					<PoolPoint
 						key= {i}
-						onClick={() => {
-							if (i < props.availablePoints) { props.onSet(i); }
-						}}
+						onClick={ () => props.onClick(i) }
 						filledIn={ i < props.perk.points }
 					/>
 				))

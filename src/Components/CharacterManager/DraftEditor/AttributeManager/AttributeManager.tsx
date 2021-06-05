@@ -47,7 +47,11 @@ export function AttributeManager(): JSX.Element {
 								name={`Mental (${campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.mental})`}
 								columns={campaign.characterDrafts[currentCharacter[0]].character.attributes.mental}
 								availablePoints={campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.mental}
-								onSelectValue={ (valueIndex, height) =>  console.log(valueIndex, height)}
+								onSelectValue={ (valueIndex, height) => CharacterDraft.setAttribute(
+									'mental',
+									campaign.characterDrafts[currentCharacter[0]].character.attributes.mental[valueIndex].name,
+									height
+								) }
 							/>
 						</>
 					) : (

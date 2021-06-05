@@ -27,6 +27,7 @@ export const CampaignContext = React.createContext<{
 		resetAttributePointRelation: () => unknown;
 		setAbilityPointRelation: (options: { talents: number, skills: number, knowledges: number }) => unknown;
 		resetAbilityPointRelation: () => unknown;
+		setAttribute: (attribute: 'physical' | 'social' | 'mental', perkName: string, points: number) => unknown;
 	},
 
 	addCharacterDraft: (characterName: string) => unknown,
@@ -48,6 +49,7 @@ export const CampaignContext = React.createContext<{
 		resetAttributePointRelation: () => {},
 		setAbilityPointRelation: (options: { talents: number, skills: number, knowledges: number }) => {},
 		resetAbilityPointRelation: () => {},
+		setAttribute: (attribute: 'physical' | 'social' | 'mental', perkName: string, points: number) => {}
 	},
 
 	addCharacterDraft: (characterName: string) => {},
@@ -154,7 +156,33 @@ export function App(): JSX.Element {
 			draft.draftParams.abilityPoints.knowledges = 0;
 			draft.draftParams.abilityPoints.pointsGiven = false;
 			setCurrentCharacterDraft(draft);
-		}
+		},
+		setAttribute (attribute: 'physical' | 'social' | 'mental', perkName: string, points: number) {
+			// only allow setting if remaining points are sufficient
+			const draft = retrieveCurrentCharacterDraft();
+			const pointsForAttribute = draft.draftParams.attributePoints[attribute];
+			switch (attribute) {
+				case "mental": {
+					// set new perks with points
+					const newPerks = draft.character.attributes.mental.map(perk => {
+						// + 1 because arrays start at 0 and one point is always set
+						if (perk.name === perkName) { perk.points = points + 1; }
+						return perk;
+					});
+					// check how many points are already spent. remove 3 due to start points
+					const alreadySpent = draft.character.attributes.mental
+						.map((perk) => perk.points)
+						.reduce((last, current) => last + current) - 3;
+					const remaining = pointsForAttribute - alreadySpent;
+					// only if there are enough points, the action is applied
+					if (remaining >= 0) {
+						draft.character.attributes.mental = newPerks;
+						setCurrentCharacterDraft(draft);
+					}
+					break;
+				}
+			}
+		},
 	};
 
 	return (

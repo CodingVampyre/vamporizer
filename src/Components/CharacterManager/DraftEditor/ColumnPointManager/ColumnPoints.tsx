@@ -5,7 +5,6 @@ import {PoolPoint} from "../../../Common/Button/PoolPoint";
 import * as _ from 'lodash';
 
 export function ColumnPoints(props: {
-	availablePoints: number;
 	onClick: (selectedPoints: number) => unknown;
 	perk: IPerk;
 }): JSX.Element {
@@ -15,7 +14,7 @@ export function ColumnPoints(props: {
 			{
 				_.times(5, i => (
 					<PoolPoint
-						key= {i}
+						key={i}
 						onClick={ () => props.onClick(i) }
 						filledIn={ i < props.perk.points }
 					/>

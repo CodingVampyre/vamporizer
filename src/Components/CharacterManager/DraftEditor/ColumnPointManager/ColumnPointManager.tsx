@@ -17,7 +17,6 @@ export function ColumnPointManager(props: {
 				props.columns.map((column, index) => (
 					<div key={index}>
 						<ColumnPoints
-							availablePoints={props.availablePoints}
 							onClick={ (height) => props.onSelectValue(index, height) }
 							perk={column}
 						/>

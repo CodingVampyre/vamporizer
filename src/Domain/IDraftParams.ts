@@ -11,6 +11,7 @@ export interface IDraftParams {
 		physical: number;
 		social: number;
 		mental: number;
+		pointsGiven: boolean;
 	}
 
 	// assigned points
@@ -18,6 +19,7 @@ export interface IDraftParams {
 		talents: number;
 		skills: number;
 		knowledges: number;
+		pointsGiven: boolean;
 	}
 
 	// 0 default, +1 for every flaw, -1 for every merit

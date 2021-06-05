@@ -55,9 +55,9 @@ export function createEmptyCharacter(name: string, campaign: string): ICharacter
 export function createDraftParams(): IDraftParams {
 	return {
 		abilityAvailablePoints: [13, 9, 5],
-		abilityPoints: {knowledges: 0, skills: 0, talents: 0},
+		abilityPoints: {knowledges: 0, skills: 0, talents: 0, pointsGiven: false},
 		attributeAvailablePoints: [7, 5, 3],
-		attributePoints: {mental: 0, physical: 0, social: 0},
+		attributePoints: {mental: 0, physical: 0, social: 0, pointsGiven: false},
 		meritFlawRelations: 0,
 	}
 }

@@ -128,6 +128,7 @@ export function App(): JSX.Element {
 			draft.draftParams.attributePoints.mental = options.mental;
 			draft.draftParams.attributePoints.social = options.social;
 			draft.draftParams.attributePoints.physical = options.physical;
+			draft.draftParams.attributePoints.pointsGiven = true;
 			setCurrentCharacterDraft(draft);
 		},
 		resetAttributePointRelation() {
@@ -135,6 +136,7 @@ export function App(): JSX.Element {
 			draft.draftParams.attributePoints.mental = 0;
 			draft.draftParams.attributePoints.physical = 0;
 			draft.draftParams.attributePoints.social = 0;
+			draft.draftParams.attributePoints.pointsGiven = false;
 			setCurrentCharacterDraft(draft);
 		},
 		setAbilityPointRelation(options: { talents: number; skills: number; knowledges: number }) {
@@ -142,6 +144,7 @@ export function App(): JSX.Element {
 			draft.draftParams.abilityPoints.skills = options.skills;
 			draft.draftParams.abilityPoints.talents = options.talents;
 			draft.draftParams.abilityPoints.knowledges = options.knowledges;
+			draft.draftParams.abilityPoints.pointsGiven = true;
 			setCurrentCharacterDraft(draft);
 		},
 		resetAbilityPointRelation() {
@@ -149,6 +152,7 @@ export function App(): JSX.Element {
 			draft.draftParams.abilityPoints.skills = 0;
 			draft.draftParams.abilityPoints.talents = 0;
 			draft.draftParams.abilityPoints.knowledges = 0;
+			draft.draftParams.abilityPoints.pointsGiven = false;
 			setCurrentCharacterDraft(draft);
 		}
 	};

@@ -3,15 +3,15 @@ import './PerkColumnPointSetter.css';
 import {Button} from "../../../Common/Button/Button";
 import {useEffect, useState} from "react";
 
-type ProperySet = Array<{ name: string; points: number; }>
+export type PropertySet = Array<{ name: string; points: number; }>
 
 export function PerkColumnPointSetter(props: {
 	columns: string[];
 	points: number[];
-	onFinish: (set: ProperySet) => unknown;
+	onFinish: (set: PropertySet) => unknown;
 }): JSX.Element {
 
-	const [currentSet, setCurrentSet] = useState<ProperySet>([]);
+	const [currentSet, setCurrentSet] = useState<PropertySet>([]);
 	const [remainingColumns, setRemainingColumns] = useState<string[]>(props.columns.slice());
 	const [remainingPoints, setRemainingPoints] = useState<number[]>(props.points.slice());
 	const [isSetting, setIsSetting] = useState<boolean>(true);

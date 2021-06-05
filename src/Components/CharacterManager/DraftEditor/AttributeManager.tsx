@@ -3,16 +3,30 @@ import './AttributeManager.css';
 import {useContext, useEffect} from "react";
 import {CampaignContext} from "../../../Context/CampaignContext";
 import {Header} from "../../Common/Header/Header";
-import {PerkColumnPointSetter} from "./PerkColumnPointSetter/PerkColumnPointSetter";
+import {PerkColumnPointSetter, PropertySet} from "./PerkColumnPointSetter/PerkColumnPointSetter";
 
 export function AttributeManager(): JSX.Element {
 
-	const { campaign, currentCharacter } = useContext(CampaignContext);
+	const { campaign, currentCharacter, CharacterDraft } = useContext(CampaignContext);
 
-	useEffect(() => {
-		const characterDraft = campaign.characterDrafts[currentCharacter[0]];
-		const pointsGiven = characterDraft.draftParams.attributePoints.pointsGiven;
-	}, []);
+	function storeAttributePoints(set: PropertySet) {
+		const results = {
+			physical: 0,
+			social: 0,
+			mental: 0,
+		}
+
+		for (const property of set) {
+			switch (property.name) {
+				case 'physical': results.physical = property.points; break;
+				case 'mental': results.mental = property.points; break;
+				case 'social': results.social = property.points; break;
+				default: console.error('MYSTERIOUS PROPERTY');
+			}
+		}
+
+		CharacterDraft.setAttributePointRelation(results);
+	}
 
 	return (
 		<div className={'attribute-manager'}>
@@ -20,7 +34,6 @@ export function AttributeManager(): JSX.Element {
 				{
 					campaign.characterDrafts[currentCharacter[0]].draftParams.attributePoints.pointsGiven ? (
 						<>
-							<Header text={'Points are set! :)'} />
 							<Header text={'Physical'} />
 							<Header text={'Social'} />
 							<Header text={'Mental'} />
@@ -30,7 +43,7 @@ export function AttributeManager(): JSX.Element {
 							<PerkColumnPointSetter
 								columns={ ['physical', 'social', 'mental'] }
 								points={ campaign.characterDrafts[currentCharacter[0]].draftParams.attributeAvailablePoints }
-								onFinish={ (propertySet) => console.log(propertySet) }
+								onFinish={ (propertySet) => storeAttributePoints(propertySet) }
 							/>
 						</>
 					)

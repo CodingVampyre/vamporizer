@@ -183,6 +183,8 @@ export function App(): JSX.Element {
 
 		},
 		setAbility (ability: 'skills' | 'talents' | 'knowledges', perkName: string, points: number) {
+			// max of three points allowed
+			if (points > 2) { return; }
 			// only allow setting if remaining points are sufficient
 			const draft = retrieveCurrentCharacterDraft();
 			const pointsForAttribute = draft.draftParams.abilityPoints[ability];

@@ -193,10 +193,10 @@ export function App(): JSX.Element {
 				if (perk.name === perkName) { perk.points = points + 1; }
 				return perk;
 			});
-			// check how many points are already spent. remove 3 due to start points
+			// check how many points are already spent
 			const alreadySpent = draft.character.abilities[ability]
 				.map((perk) => perk.points)
-				.reduce((last, current) => last + current) - 3;
+				.reduce((last, current) => last + current);
 			const remaining = pointsForAttribute - alreadySpent;
 			// only if there are enough points, the action is applied
 			if (remaining >= 0) {

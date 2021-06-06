@@ -17,49 +17,61 @@ export function DraftEditor(): JSX.Element {
 	return (
 		<div className={'draft-editor'}>
 			<Category>
-				<EditableTextField
-					caption={'Name:'}
-					value={campaign.characterDrafts[currentCharacter[0]].character.name}
-					onConfirm={ (name) => CharacterDraft.setName(name) }
-				/>
-				<EditableListField
-					caption={'Clan:'}
-					value={campaign.characterDrafts[currentCharacter[0]].character.clan}
-					list={Clans}
-					onSelect={ (value) => CharacterDraft.setClan(value) }
-				/>
-				<EditableTextField
-					caption={'Player:'}
-					value={campaign.characterDrafts[currentCharacter[0]].character.player}
-					onConfirm={ (value) => CharacterDraft.setPlayer(value) }
-				/>
-				<EditableTextField
-					caption={'Chronicle:'}
-					value={campaign.characterDrafts[currentCharacter[0]].character.chronicle}
-					onConfirm={ (value) => CharacterDraft.setChronicle(value) }
-				/>
-				<EditableTextField
-					caption={'Sire:'}
-					value={campaign.characterDrafts[currentCharacter[0]].character.sire}
-					onConfirm={ (value) => CharacterDraft.setSire(value) }
-				/>
-				<EditableTextField
-					caption={'Concept:'}
-					value={campaign.characterDrafts[currentCharacter[0]].character.concept}
-					onConfirm={ (value) => CharacterDraft.setConcept(value) }
-				/>
-				<EditableListField
-					caption={'Nature:'}
-					value={campaign.characterDrafts[currentCharacter[0]].character.nature}
-					list={Archetypes}
-					onSelect={ (value) => CharacterDraft.setNature(value) }
-				/>
-				<EditableListField
-					caption={'Demeanor:'}
-					value={campaign.characterDrafts[currentCharacter[0]].character.demeanor}
-					list={Archetypes}
-					onSelect={ (value) => CharacterDraft.setDemeanor(value) }
-				/>
+				<div className={'columns'}>
+
+					<div className={'rows'}>
+						<EditableTextField
+							caption={'Name:'}
+							value={campaign.characterDrafts[currentCharacter[0]].character.name}
+							onConfirm={ (name) => CharacterDraft.setName(name) }
+						/>
+						<EditableListField
+							caption={'Clan:'}
+							value={campaign.characterDrafts[currentCharacter[0]].character.clan}
+							list={Clans}
+							onSelect={ (value) => CharacterDraft.setClan(value) }
+						/>
+						<EditableTextField
+							caption={'Player:'}
+							value={campaign.characterDrafts[currentCharacter[0]].character.player}
+							onConfirm={ (value) => CharacterDraft.setPlayer(value) }
+						/>
+					</div>
+
+					<div className={'rows'}>
+						<EditableTextField
+							caption={'Chronicle:'}
+							value={campaign.characterDrafts[currentCharacter[0]].character.chronicle}
+							onConfirm={ (value) => CharacterDraft.setChronicle(value) }
+						/>
+						<EditableTextField
+							caption={'Sire:'}
+							value={campaign.characterDrafts[currentCharacter[0]].character.sire}
+							onConfirm={ (value) => CharacterDraft.setSire(value) }
+						/>
+						<EditableTextField
+							caption={'Concept:'}
+							value={campaign.characterDrafts[currentCharacter[0]].character.concept}
+							onConfirm={ (value) => CharacterDraft.setConcept(value) }
+						/>
+					</div>
+
+					<div className={'rows'}>
+						<EditableListField
+							caption={'Nature:'}
+							value={campaign.characterDrafts[currentCharacter[0]].character.nature}
+							list={Archetypes}
+							onSelect={ (value) => CharacterDraft.setNature(value) }
+						/>
+						<EditableListField
+							caption={'Demeanor:'}
+							value={campaign.characterDrafts[currentCharacter[0]].character.demeanor}
+							list={Archetypes}
+							onSelect={ (value) => CharacterDraft.setDemeanor(value) }
+						/>
+					</div>
+
+				</div>
 			</Category>
 
 			<Category>

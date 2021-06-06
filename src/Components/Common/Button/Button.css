@@ -11,6 +11,18 @@
 	transition: 100ms;
 }
 
+.borderless {
+	border: none;
+}
+
+.borderless:hover {
+	box-shadow: none;
+}
+
+.borderless:active {
+	box-shadow: none;
+}
+
 .button:hover {
 	box-shadow: 0 2px 0 white;
 	transform: translate(0, -2px);

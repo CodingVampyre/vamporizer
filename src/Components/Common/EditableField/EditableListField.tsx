@@ -19,7 +19,7 @@ export function EditableListField(props: {
 				!editMode ? (
 					<div>
 						<span className={'editable-list-field-text'}>{props.caption} { props.value['name'] }</span>
-						<Button text={'Edit'} onClick={ () => setEditMode(true)} />
+						<Button text={'✏️'} onClick={ () => setEditMode(true)} borderless />
 					</div>
 				) : (
 					<div className={'editable-list-field-edit'}>

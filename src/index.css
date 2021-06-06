@@ -14,3 +14,13 @@ body {
 	height: 100vh;
 	box-sizing: border-box;
 }
+
+.columns {
+	display: flex;
+	flex-direction: row;
+}
+
+.rows {
+	display: flex;
+	flex-direction: column;
+}

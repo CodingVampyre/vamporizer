@@ -2,7 +2,6 @@ import * as React from 'react';
 import './AttributeManager.css';
 import {useContext} from "react";
 import {CampaignContext} from "../../../../Context/CampaignContext";
-import {Header} from "../../../Common/Header/Header";
 import {PerkColumnPointSetter, PropertySet} from "../PerkColumnPointSetter/PerkColumnPointSetter";
 import {ColumnPointManager} from "../ColumnPointManager/ColumnPointManager";
 

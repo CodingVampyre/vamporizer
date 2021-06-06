@@ -28,6 +28,7 @@ export const CampaignContext = React.createContext<{
 		setAbilityPointRelation: (options: { talents: number, skills: number, knowledges: number }) => unknown;
 		resetAbilityPointRelation: () => unknown;
 		setAttribute: (attribute: 'physical' | 'social' | 'mental', perkName: string, points: number) => unknown;
+		setAbility: (ability: 'talents' | 'skills' | 'knowledges', perkName: string, points: number) => unknown;
 	},
 
 	addCharacterDraft: (characterName: string) => unknown,
@@ -49,7 +50,8 @@ export const CampaignContext = React.createContext<{
 		resetAttributePointRelation: () => {},
 		setAbilityPointRelation: (options: { talents: number, skills: number, knowledges: number }) => {},
 		resetAbilityPointRelation: () => {},
-		setAttribute: (attribute: 'physical' | 'social' | 'mental', perkName: string, points: number) => {}
+		setAttribute: (attribute: 'physical' | 'social' | 'mental', perkName: string, points: number) => {},
+		setAbility: (ability: 'talents' | 'skills' | 'knowledges', perkName: string, points: number) => {},
 	},
 
 	addCharacterDraft: (characterName: string) => {},
@@ -176,6 +178,29 @@ export function App(): JSX.Element {
 			// only if there are enough points, the action is applied
 			if (remaining >= 0) {
 				draft.character.attributes[attribute] = newPerks;
+				setCurrentCharacterDraft(draft);
+			}
+
+		},
+		setAbility (ability: 'skills' | 'talents' | 'knowledges', perkName: string, points: number) {
+			// only allow setting if remaining points are sufficient
+			const draft = retrieveCurrentCharacterDraft();
+			const pointsForAttribute = draft.draftParams.abilityPoints[ability];
+
+			// set new perks with points
+			const newPerks = draft.character.abilities[ability].map(perk => {
+				// + 1 because arrays start at 0 and one point is always set
+				if (perk.name === perkName) { perk.points = points + 1; }
+				return perk;
+			});
+			// check how many points are already spent. remove 3 due to start points
+			const alreadySpent = draft.character.abilities[ability]
+				.map((perk) => perk.points)
+				.reduce((last, current) => last + current) - 3;
+			const remaining = pointsForAttribute - alreadySpent;
+			// only if there are enough points, the action is applied
+			if (remaining >= 0) {
+				draft.character.abilities[ability] = newPerks;
 				setCurrentCharacterDraft(draft);
 			}
 

@@ -9,6 +9,7 @@ export function ColumnPointManager(props: {
 	columns: IPerk[];
 	availablePoints: number;
 	onSelectValue: (valueIndex: number, selected: number) => unknown;
+	displayX?: boolean;
 }): JSX.Element {
 	return (
 		<div className={'column-point-manager'}>
@@ -17,6 +18,7 @@ export function ColumnPointManager(props: {
 				props.columns.map((column, index) => (
 					<div key={index}>
 						<ColumnPoints
+							displayX={props.displayX}
 							onClick={ (height) => props.onSelectValue(index, height) }
 							perk={column}
 						/>

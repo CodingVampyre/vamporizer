@@ -39,6 +39,7 @@ export function AbilityManager(): JSX.Element {
 									campaign.characterDrafts[currentCharacter[0]].character.abilities.skills[valueIndex].name,
 									height
 								) }
+								displayX
 							/>
 							<ColumnPointManager
 								name={`Talents (${campaign.characterDrafts[currentCharacter[0]].draftParams.abilityPoints.talents})`}
@@ -49,6 +50,7 @@ export function AbilityManager(): JSX.Element {
 									campaign.characterDrafts[currentCharacter[0]].character.abilities.talents[valueIndex].name,
 									height
 								) }
+								displayX
 							/>
 							<ColumnPointManager
 								name={`Knowledges (${campaign.characterDrafts[currentCharacter[0]].draftParams.abilityPoints.knowledges})`}
@@ -59,6 +61,7 @@ export function AbilityManager(): JSX.Element {
 									campaign.characterDrafts[currentCharacter[0]].character.abilities.knowledges[valueIndex].name,
 									height
 								) }
+								displayX
 							/>
 						</>
 					) : (

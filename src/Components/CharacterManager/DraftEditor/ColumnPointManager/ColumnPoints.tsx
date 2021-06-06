@@ -11,6 +11,10 @@ export function ColumnPoints(props: {
 	return (
 		<div className={'column-points'}>
 			<span>{ props.perk.name }</span>
+			<span
+				style={{cursor: 'pointer'}}
+				onClick={ () => props.onClick(-1) }
+			>❌</span>
 			{
 				_.times(5, i => (
 					<PoolPoint
